@@ -1,5 +1,3 @@
-# I-O-T
-
 # Light Pollution Monitoring System
 
 A complete IoT-based environmental monitoring system using ESP32 and BH1750 light sensor with PHP & MySQL backend for real-time light pollution monitoring.
@@ -157,8 +155,8 @@ const char* serverName = "http://YOUR_IP_ADDRESS/hayag/api/insert.php";
 Edit `api/config.php` to adjust thresholds:
 
 ```php
-define('LUX_THRESHOLD_LOW', 50\);     // Low: 0-50 lux
-define('LUX_THRESHOLD_HIGH', 150\);  // High: 151+ lux
+define('LUX_THRESHOLD_LOW', 50);     // Low: 0-50 lux
+define('LUX_THRESHOLD_HIGH', 150);  // High: 151+ lux
 ```
 
 ### Data Retention
