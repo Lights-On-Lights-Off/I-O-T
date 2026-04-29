@@ -18,12 +18,12 @@
 #include <BH1750.h>
 
 // ─── WiFi Configuration ───────────────────────────────────────────────────────
-const char* ssid     = "Wifi name
-const char* password = "Your wifi password";
+const char* ssid     = "";
+const char* password = "";
 
 // ─── Server Configuration ─────────────────────────────────────────────────────
-// TODO: Replace with your actual server IP or domain
-const char* serverName = "serverlink"
+// TODO: Replace with your current ngrok URL each session
+const char* serverName = "insert the link here";  // e.g. "https://abcd1234.ngrok.io/api/receive_data.php"
 
 // ─── Device Configuration ─────────────────────────────────────────────────────
 const char* deviceId = "ESP32_001";
@@ -302,7 +302,6 @@ bool sendDataToServer(float lux, String level, String device_id) {
   WiFiClientSecure client;
   client.setInsecure();  // skip SSL cert verification
   HTTPClient http;
-  http.addHeader("ngrok-skip-browser-warning", "true");
 
   Serial.print("Sending to: ");
   Serial.println(serverName);
@@ -312,6 +311,7 @@ bool sendDataToServer(float lux, String level, String device_id) {
     return false;
   }
 
+  http.addHeader("ngrok-skip-browser-warning", "true");
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
   http.addHeader("User-Agent", "ESP32-LightMonitor/1.0");
   http.setTimeout(10000);
